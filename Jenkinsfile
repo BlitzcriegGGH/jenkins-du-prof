@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        CREDENTIALS_ID = 'MACLEOHSECOURS'
+        URL = 'https://github.com/BlitzcriegGGH/jenkins-du-prof.git'
+    }
 
     stages {
         stage('Clone repository') {
@@ -8,8 +12,8 @@ pipeline {
                     $class: 'GitSCM',
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
-                        credentialsId: 'MACLEOHSECOURS',
-                        url: 'https://github.com/BlitzcriegGGH/jenkins-du-prof.git'
+                        credentialsId: "${CREDENTIALS_ID}",
+                        url: "${URL}"
                     ]]
                 ])
                 echo 'Cloning repository...'
