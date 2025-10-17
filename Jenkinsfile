@@ -1,2 +1,2 @@
-@Library('java-builder@main') _
+@Library('java-builder') _
 javaPipeline {}
