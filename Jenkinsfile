@@ -37,7 +37,7 @@ pipeline {
         stage('Clean') {
             steps {
                 echo 'Maven clean...'
-                sh "chmod '+x' ./mvnw"
+                sh "chmod '+x' mvnw"
                 sh "./mvnw clean"
             }
         }
