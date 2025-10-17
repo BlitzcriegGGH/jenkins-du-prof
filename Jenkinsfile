@@ -60,6 +60,22 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
+                sshPublisher(publishers: [
+                    sshPublisherDesc(
+                        configName: 'SERVEUR',
+                        transfers: [
+                            sshTransfer(
+                                sourceFiles: 'target/*.jar',
+                                removePrefix: '',
+                                remoteDirectory: '/tmp',
+                                execCommand: 'ls -la /tmp',
+                                execTimeout: 120000
+                            )
+                        ],
+                        usePromotionTimestamp: false,
+                        verbose: true
+                    )
+                ])
             }
         }
     }
