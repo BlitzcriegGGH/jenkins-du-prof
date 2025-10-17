@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         CREDENTIALS_ID = 'MACLEOHSECOURS'
-        URL = 'https://github.com/BlitzcriegGGH/jenkins-du-prof.git'
+        URL_GIT = 'https://github.com/BlitzcriegGGH/jenkins-du-prof.git'
     }
 
     stages {
@@ -13,7 +13,7 @@ pipeline {
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[
                         credentialsId: "${CREDENTIALS_ID}",
-                        url: "${URL}"
+                        url: "${URL_GIT}"
                     ]]
                 ])
                 echo 'Cloning repository...'
