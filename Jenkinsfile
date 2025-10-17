@@ -34,16 +34,25 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Clean') {
             steps {
-                echo 'Building...'
+                echo 'Maven clean...'
+                sh "./mvnw clean package"
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing...'
+                echo 'Maven test...'
                 sh 'cat servers.csv'
+                sh './mvnw test'
+            }
+        }
+
+        stage('Install') {
+            steps {
+                echo 'Maven install...'
+                sh './mvnw install'
             }
         }
 
