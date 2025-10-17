@@ -17,6 +17,7 @@ pipeline {
                     ]]
                 ])
                 echo 'Cloning repository...'
+                sh "printenv"
             }
         }
 
